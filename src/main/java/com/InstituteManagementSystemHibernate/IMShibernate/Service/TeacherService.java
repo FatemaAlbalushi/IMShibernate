@@ -62,7 +62,7 @@ public class TeacherService {
      * @return the updated Teacher
      */
     public Optional<Teacher> updateTeacher(int id, Teacher updatedTeacher){
-        Optional<Teacher> foundTeacher = getSpecificTeacherInfo(id);
+        Optional<Teacher> foundTeacher = teacherRepository.findById(id);
         foundTeacher.ifPresent(
                 (currTeacher)->{
                     currTeacher.TeacherName = updatedTeacher.TeacherName;

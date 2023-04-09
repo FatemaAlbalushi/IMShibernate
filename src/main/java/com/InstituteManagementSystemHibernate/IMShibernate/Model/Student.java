@@ -2,6 +2,7 @@ package com.InstituteManagementSystemHibernate.IMShibernate.Model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 
 /**
  * The Student class represents a student in the Institute Management System.
@@ -27,5 +28,7 @@ public class Student {
      * The email address of the student.
      */
     @Column
+    @Pattern(regexp = "^[a-z|A-Z|.]+@[a-z|A-Z]+\\.[a-z|A-Z]{2,}$")
+   // @Pattern(regexp="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}", message="Invalid email")
     public String Studentemail;
 }

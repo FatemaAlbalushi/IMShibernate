@@ -32,21 +32,18 @@ public class CourseService {
         return courseRepository.findById(id);
     }
 
-    public Course createCourse(Course course) {
-
-
-
+    public Course registerCourse(Course course) {
         logger.info("Created course with id: " + course.Courseid);
         return courseRepository.save(course);
     }
 
     public Optional<Course> updateCourse(int id, Course updatedCourse) {
-        Optional<Course> foundCourse = getSpecificCourseInfo(id);
+        Optional<Course> foundCourse = courseRepository.findById(id);
         foundCourse.ifPresent(
                 (currCourse)->{
-                    currCourse.Courseid = updatedCourse.Courseid;
+//                    currCourse.Courseid = updatedCourse.Courseid;
                     currCourse.CourseName= updatedCourse.CourseName;
-                    currCourse.CourseDescription= updatedCourse.CourseDescription;
+//                    currCourse.CourseDescription= updatedCourse.CourseDescription;
 
                     courseRepository.save(currCourse);
                 }
@@ -56,7 +53,7 @@ public class CourseService {
         return foundCourse;
     }
 
-    public Optional<Course> deleteCourse(int id) {
+    public Optional<Course> dropCourse(int id) {
         Optional<Course>  foundCourse = getSpecificCourseInfo(id);
         courseRepository.deleteById(id);
 

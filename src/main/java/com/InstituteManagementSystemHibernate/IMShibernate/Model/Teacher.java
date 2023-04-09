@@ -35,4 +35,7 @@ public class Teacher {
     @Column
     public double salary;
 
+    @OneToOne(mappedBy = "CourseMentor")
+    public Course course;
+
 }

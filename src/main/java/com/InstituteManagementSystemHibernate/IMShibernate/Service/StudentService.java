@@ -65,7 +65,7 @@ public class StudentService {
      * @return the updated student
      */
     public Optional<Student> updateStudent(int id,Student updatedStudent){
-        Optional<Student> foundStudent = getSpecificStudentInfo(id);
+        Optional<Student> foundStudent = studentRepository.findById(id);
         foundStudent.ifPresent(
                 (currStudent)->{
                     currStudent.Studentname = updatedStudent.Studentname;

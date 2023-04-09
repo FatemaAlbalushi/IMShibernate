@@ -29,7 +29,7 @@ public class CourseController {
 
     @PostMapping("")
     public Course createCourse(@RequestBody Course course) {
-        return courseService.createCourse(course);
+        return courseService.registerCourse(course);
     }
 
     @PutMapping("/{id}")
@@ -39,7 +39,7 @@ public class CourseController {
 
     @DeleteMapping("/{id}")
     public Optional<Course> deleteCourse(@PathVariable int id) {
-        return courseService.deleteCourse(id);
+        return courseService.dropCourse(id);
     }
 //    @GetMapping("/{id}/applied-students")
 //    public List<Student> getAppliedStudentsByCourseId(@PathVariable int id) {

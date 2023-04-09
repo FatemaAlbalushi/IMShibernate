@@ -2,6 +2,7 @@ package com.InstituteManagementSystemHibernate.IMShibernate.Controller;
 
 import com.InstituteManagementSystemHibernate.IMShibernate.Model.Student;
 import com.InstituteManagementSystemHibernate.IMShibernate.Service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +43,7 @@ public class StudentController {
      * @return the newly created student
      */
     @PostMapping
-    public Student createStudent(@RequestBody Student currStudent){
+    public Student createStudent(@Valid @RequestBody Student currStudent){
         studentService.createStudent(currStudent);
         return currStudent;
     }

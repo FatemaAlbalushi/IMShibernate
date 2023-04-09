@@ -1,5 +1,7 @@
 package com.InstituteManagementSystemHibernate.IMShibernate.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -13,29 +15,35 @@ public class Course {
     public int Courseid;
     @Column
     public String CourseName;
-//    @Column
-//    public List<Student> students;
-//    @Column
-//    public List<Teacher> teachers;
-    @Column
-    public String CourseDescription;
 
 
-    public int getId() {
-        return Courseid;
+    @OneToOne(optional = true, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "teacher_id", referencedColumnName = "TeacherId")
+    @JsonIgnore
+    public Teacher CourseMentor;
+
+
+    @JsonProperty("teacher_id")
+    public Integer getMentorId(){
+        return CourseMentor != null ? CourseMentor.TeacherId:null;
     }
 
-    public void setId(int id) {
-        this.Courseid = id;
-    }
 
-    public String getName() {
-        return CourseName;
-    }
-
-    public void setName(String name) {
-        this.CourseName = name;
-    }
+//    public int getId() {
+//        return Courseid;
+//    }
+//
+//    public void setId(int id) {
+//        this.Courseid = id;
+//    }
+//
+//    public String getName() {
+//        return CourseName;
+//    }
+//
+//    public void setName(String name) {
+//        this.CourseName = name;
+//    }
 
 //    public List<Student> getStudents() {
 //        return students;
@@ -57,11 +65,11 @@ public class Course {
 //        this.teachers = teachers;
 //    }
 
-    public String getDescription() {
-        return CourseDescription;
-    }
-
-    public void setDescription(String description) {
-        this.CourseDescription = description;
-    }
+//    public String getDescription() {
+//        return CourseDescription;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.CourseDescription = description;
+//    }
 }
