@@ -41,14 +41,6 @@ public class CourseController {
     public Optional<Course> deleteCourse(@PathVariable int id) {
         return courseService.dropCourse(id);
     }
-//    @GetMapping("/{id}/applied-students")
-//    public List<Student> getAppliedStudentsByCourseId(@PathVariable int id) {
-//        return courseService.getAppliedStudentsByCourseId(id);
-//    }
-//
-//    @PostMapping("/{id}/applied-students/add")
-//    public void addAppliedStudentToCourse(@PathVariable int id, @RequestBody Student student) {
-//        courseService.addAppliedStudentToCourse(id, student);
-//    }
+
 
 }
